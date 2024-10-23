@@ -14,7 +14,7 @@ const ItemList = () => {
     const fetchItems = async () => {
       try {
         // 调用后端 API 获取数据
-        const response = await axios.get('http://localhost:8081/api/item/index');
+        const response = await axios.get('http://localhost:80/api/item/index');
         // 假设你的响应数据在 response.data.data 中
         console.log(response.data.data);
         console.log(response.data.data[0].url);
