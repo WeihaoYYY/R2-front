@@ -40,7 +40,9 @@ function App() {
 
         <Routes>
           {/* 首页，展示 Item 列表 */}
-          <Route path="/" element={<ItemList items={items} />} />
+          {/* <Route path="/" element={<ItemList items={items} />} /> */}
+          <Route path="/" element={<ItemList />} />
+
           
           {/* Item 详情页，展示特定 item 的详情 */}
           {/* <Route path="/item/:id" element={<ItemDetails />} /> */}
