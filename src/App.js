@@ -13,7 +13,7 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [items, setItems] = useState([]); // Replace this with actual data fetching
+  // const [items, setItems] = useState([]); // Replace this with actual data fetching
 
   const showLoginModal = () => setShowLogin(true);
   const closeLoginModal = () => setShowLogin(false);
