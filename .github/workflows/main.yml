@@ -3,7 +3,7 @@ name: Frontend CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -31,10 +31,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/r2fn:latest .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/whdev:r2fn .
 
     - name: Push Docker image to Docker Hub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/r2fn:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/whdev:r2fn
 
   deploy:
     needs: build
@@ -52,5 +52,5 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/r2fn:latest
           docker stop r2fn || true
           docker rm r2fn || true
-          docker run -d -p 80:80 --name r2fn ${{ secrets.DOCKER_USERNAME }}/r2fn:latest
+          docker run -d -p 80:80 --name r2fn ${{ secrets.DOCKER_USERNAME }}/whdev:r2fn
         EOF
