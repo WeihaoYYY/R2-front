@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CONFIG from './config';
+import CONFIG from '../config';
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
@@ -15,7 +15,8 @@ const ItemList = () => {
     const fetchItems = async () => {
       try {
         // 调用后端 API 获取数据
-        const response = await axios.get('${CONFIG.API_BASE_URL}/item/index');
+        const response = await axios.get(`${CONFIG.API_BASE_URL}/item/index`);
+
         // 假设你的响应数据在 response.data.data 中
         console.log(response.data.data);
         console.log(response.data.data[0].url);
