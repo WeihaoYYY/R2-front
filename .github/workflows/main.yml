@@ -24,11 +24,26 @@ jobs:
     - name: Build application
       run: npm run build
 
+    - name: Check if secrets exist
+      run: |
+        if [ "${{ secrets.DOCKERHUB_USERNAME }}" != "" ]; then
+          echo "Username secret exists"
+        else
+          echo "Username secret is empty"
+        fi
+        if [ "${{ secrets.DOCKERHUB_TOKEN }}" != "" ]; then
+          echo "Token secret exists"
+        else
+          echo "Token secret is empty"
+        fi
+
+
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKER_LOGIN_TOKEN }}
+        debug: true
         
     - name: Build Docker image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/whdev:r2fn .
