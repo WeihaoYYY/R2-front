@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CONFIG from '../config';
+import { useNavigate } from 'react-router-dom';
+
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const defaultImageUrl = "https://wy-dev.s3.ap-southeast-2.amazonaws.com/r2/images/items/documentImage.png";
+  const navigate = useNavigate();
 
 
   // 使用 useEffect 钩子在组件加载时发送请求
@@ -15,7 +17,7 @@ const ItemList = () => {
     const fetchItems = async () => {
       try {
         // 调用后端 API 获取数据
-        const response = await axios.get(`${CONFIG.API_BASE_URL}/item/index`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/item/index`);
 
         // 假设你的响应数据在 response.data.data 中
         console.log(response.data.data);
@@ -50,7 +52,7 @@ const ItemList = () => {
                 <div className="col-md-8">
                   <div className="card-body">
                     <h5 className="card-title">
-                      <a href={`/item/detail/${item.sid}`} className="titlelink">
+                      <a href="javascript:void(0);" onClick={() => navigate(`/item/detail/${item.sid}`)} className="titlelink">
                         {item.title}
                       </a>
                     </h5>

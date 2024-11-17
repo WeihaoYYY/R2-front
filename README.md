@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# React Project README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Introduction
+This project is a front-end application based on React, designed to provide registered users with a platform to showcase the various cars they have collected. Users can explore detailed information about their collections, add new cars, edit existing ones, and even categorize them based on different attributes such as model, year, or manufacturer. Additionally, the application includes an admin panel that allows administrators to manage user accounts, review collections, and perform maintenance tasks such as moderating content or configuring application settings. The admin panel also provides insights into user activity and system performance metrics.
 
-## Available Scripts
+Please follow the steps below to install and run the project.
 
-In the project directory, you can run:
+## Environment Requirements
+- **Node.js**: It is recommended to use **Node.js version 20.x**.
+- **npm**: The project uses **npm** as the package manager (installed with Node.js).
 
-### `npm start`
+## Installation Steps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Clone the Project
+First, clone the project code to your local machine using Git:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+$ git clone https://github.com/WeihaoYYY/R2-front.git
+$ cd <project-directory>
+```
 
-### `npm test`
+### 2. Install Dependencies
+Run the following command to install the required dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+$ npm install
+```
+This command will automatically read the dependencies from the `package.json` file and install them.
 
-### `npm run build`
+### 3. Configure Environment
+Create a `.env` file according to the project requirements and set the relevant environment variables. You can refer to `.env.example` (if available).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Run the Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Development Mode
+Use the following command to start the development server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+$ npm start
+```
+This command will start the development server, running by default at `http://localhost:3000`. You can visit this address in your browser to view the project. During development, the API endpoint is set to `REACT_APP_API_BASE_URL=http://localhost:8081`.
 
-### `npm run eject`
+### 2. Production Build
+To build the project for production, run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+$ npm run build
+```
+This command will generate optimized static files in the `build` directory, which can be deployed to a production server. When running `npm run build`, the API endpoint is set to `REACT_APP_API_BASE_URL=<production-api-url>/api` (ensure to replace with your actual API URL without exposing it publicly).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Notes
+- **Node.js Version Requirement**: Please make sure your Node.js version is **20.x** to ensure the project runs properly. If you need to manage different versions of Node.js, you can use **nvm** (Node Version Manager).
+- **CORS Issues**: Since the project is a front-end and back-end separated setup, you may encounter **CORS issues** during development. To resolve this, you can download a Chrome extension "**Allow CORS: Access-Control-Allow-Origin**". Make sure to enable the extension only when needed, as it adds CORS headers to all websites, which may lead to security vulnerabilities. Once development is complete, remember to disable the extension.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## FAQ
+- If you encounter dependency installation or startup errors, try deleting the `node_modules` directory and reinstalling:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ```sh
+  $ rm -rf node_modules
+  $ npm install
+  ```
+- If the startup is very slow, check your Node.js version or try clearing the npm cache:
 
-## Learn More
+  ```sh
+  $ npm cache clean --force
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
+If you have any questions, please contact the author at **yue032994@outlook.com**.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

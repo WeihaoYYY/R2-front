@@ -8,6 +8,7 @@ import FormSection from './components/FormSection';
 import './assets/css/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import DetailsPage from './components/DetailsPage';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -44,8 +45,7 @@ function App() {
           <Route path="/" element={<ItemList />} />
 
           
-          {/* Item 详情页，展示特定 item 的详情 */}
-          {/* <Route path="/item/:id" element={<ItemDetails />} /> */}
+          <Route path="/item/detail/:sid" element={<DetailsPage />} />
           
           {/* 你可以根据需要添加更多的路由 */}
         </Routes>
