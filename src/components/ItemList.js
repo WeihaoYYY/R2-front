@@ -20,8 +20,8 @@ const ItemList = () => {
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/item/index`);
 
         // 假设你的响应数据在 response.data.data 中
-        console.log(response.data.data);
-        console.log(response.data.data[0].url);
+        // console.log(response.data.data);
+        // console.log(response.data.data[0].url);
         setItems(response.data.data);
       } catch (error) {
         setError('Failed to fetch items');

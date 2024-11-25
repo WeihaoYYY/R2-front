@@ -1,0 +1,98 @@
+.login-page {
+    min-height: calc(100vh - 64px); /* Subtract navbar height (adjust 64px if your navbar height is different) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling within the login page */
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 700px; /* 增加宽度来容纳 logo、分隔线和表单 */
+    max-width: 90vw; /* 保证在小屏幕上也能显示良好 */
+}
+
+.login-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+.login-logo img {
+    width: 120px; /* 根据需要调整 logo 的宽度 */
+    height: auto;
+}
+
+.divider {
+    width: 1px;
+    background-color: #ccc;
+    height: 200px; /* 根据表单高度调整分隔线的高度 */
+    margin: 0 1rem; /* 给分隔线左右各留一点空间 */
+}
+
+.login-form {
+    flex: 2;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #2575fc;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #6a11cb;
+}
+
+.login-form .forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #2575fc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-form .forgot-password:hover {
+    color: #6a11cb;
+}

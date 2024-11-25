@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import './style.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import api from '../utils/axiosConfig';  // 导入你配置好的 Axios 实例
 
 function openFile(url) {
     window.open(url, 'newwindow', 'width=5000,height=3000,screenX=300,screenY=100');
@@ -13,14 +11,13 @@ const DetailsPage = () => {
     const [ad, setAd] = useState({});
 
     useEffect(() => {
-        // Fetch item details using the provided sid
-        fetch(`/item/detail/${sid}`)
-            .then((res) => res.json())
+        // 使用 Axios 获取 item 详情
+        api.get(`/item/detail/${sid}`)
             .then((response) => {
-                if (response.code === 1) {
-                    setAd(response.data);
+                if (response.data && response.data.code === 1) {
+                    setAd(response.data.data);
                 } else {
-                    console.error('Error fetching item details:', response.msg);
+                    console.error('Error fetching item details:', response.data.msg);
                 }
             })
             .catch((err) => console.error('Error fetching item details:', err));
@@ -28,35 +25,6 @@ const DetailsPage = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <a href="/item/index">
-                        <img src="/static/asset/newLogo.png" className="logo" alt="Logo" />
-                    </a>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/item/ut1">Upload</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="btn btn-primary" href="/admin/index">Admin Panel</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
             <section>
                 <div style={{ margin: '20px' }}>
                     <table className="content">

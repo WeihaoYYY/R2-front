@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 import Navbar from './components/Navbar';
-import LoginModal from './components/LoginModal';
 import ItemList from './components/ItemList';
 import Footer from './components/Footer';
 import FormSection from './components/FormSection';
@@ -9,47 +9,44 @@ import './assets/css/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import DetailsPage from './components/DetailsPage';
+import LoginPage from './components/LoginPage';
+import api from './utils/axiosConfig';  
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
   const [user, setUser] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  // const [items, setItems] = useState([]); // Replace this with actual data fetching
 
-  const showLoginModal = () => setShowLogin(true);
-  const closeLoginModal = () => setShowLogin(false);
+  useEffect(() => {
+    // 尝试从 localStorage 中获取 JWT 和用户信息
+    const token = localStorage.getItem('jwtToken');
+    const userInfoString = localStorage.getItem('userInfo');
 
-  const login = () => {
-    // Here would be the API call to validate credentials
-    setUser({ name: 'User', avatarUrl: '/assets/images/default-avatar.png' });
-    setShowLogin(false);
-    setIsAdmin(false); // Set to true if user is an admin
-  };
+    if (token && userInfoString) {
+        try {
+            const userInfo = JSON.parse(userInfoString);
+            setUser(userInfo); // 恢复用户信息，包括用户名、头像和角色信息
+        } catch (error) {
+            console.error('Failed to parse user information from localStorage:', error);
+            localStorage.removeItem('userInfo'); // 如果解析失败，清除用户信息
+        }
+    }
+}, []);
+
 
   const logout = () => {
+    // 用户登出时，清除用户信息和 token
     setUser(null);
-    setIsAdmin(false);
+    localStorage.removeItem('jwtToken');
   };
 
   return (
     <Router>
       <div>
-        <Navbar showLoginModal={showLoginModal} isAdmin={isAdmin} user={user} logout={logout} />
-        <LoginModal showModal={showLogin} closeModal={closeLoginModal} login={login} />
-
-        <FormSection /> {/* 新增的 FormSection 组件 */}
-
+        <Navbar user={user} logout={logout} />
         <Routes>
-          {/* 首页，展示 Item 列表 */}
-          {/* <Route path="/" element={<ItemList items={items} />} /> */}
-          <Route path="/" element={<ItemList />} />
-
-          
-          <Route path="/item/detail/:sid" element={<DetailsPage />} />
-          
-          {/* 你可以根据需要添加更多的路由 */}
+          <Route path="/" element={<><FormSection /><ItemList /></>} />
+          <Route path="/item/detail/:sid" element={<DetailsPage user={user} logout={logout} />} />
+          <Route path="/login" element={<LoginPage setUser={setUser} />} />
         </Routes>
-        
         <Footer />
       </div>
     </Router>
