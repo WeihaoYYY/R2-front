@@ -105,8 +105,8 @@ function Navbar({ user, logout }) {
                                     <li className="nav-item">
                                         <a
                                             className="btn btn-primary"
-                                            href="/admin/index"
-                                        >
+                                            href={`${process.env.REACT_APP_API_BASE_URL}/submission.html`}
+                                            >
                                             Admin Panel
                                         </a>
                                     </li>
