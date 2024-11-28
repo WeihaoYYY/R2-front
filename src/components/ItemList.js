@@ -17,7 +17,7 @@ const ItemList = () => {
     const fetchItems = async () => {
       try {
         // 调用后端 API 获取数据
-        const response = await axios.get(`/item/index`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/item/index`);
 
         // 假设你的响应数据在 response.data.data 中
         // console.log(response.data.data);
