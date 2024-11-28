@@ -7,6 +7,8 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 
 const LoginPage = ({ setUser }) => {
+    console.log('API_BASE_URL:', process.env.REACT_APP_API_BASE_URL);
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
